@@ -7,9 +7,9 @@ const API_ENDPOINT =
 
 export async function fetchCarListings() {
   const res = await fetch(API_ENDPOINT);
-  const data = await res.json();
+  // const data = await res.json();
 
-  console.log("data", data);
+  console.log("data", res);
 
   return dummyContent.data.items;
 }
