@@ -12,6 +12,16 @@ export function CarsSlider({ carListings }: Props) {
   const [chosenCard, setChosenCard] = useState<unknown | null>(null);
 
   useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        "https://api2.myauto.ge/ka/products?TypeID=0&ForRent=0&Mans=&CurrencyID=3"
+      );
+
+      console.log("data", res);
+    })();
+  }, []);
+
+  useEffect(() => {
     const randomNumber = Math.floor(Math.random() * carListings.length);
     const chosenCard = carListings[randomNumber];
 
