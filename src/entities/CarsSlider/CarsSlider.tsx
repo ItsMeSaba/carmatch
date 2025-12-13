@@ -18,6 +18,12 @@ export function CarsSlider({ carListings }: Props) {
       );
 
       console.log("data", res);
+
+      try {
+        console.log("parsed", await res.json());
+      } catch (error) {
+        console.log("error", error);
+      }
     })();
   }, []);
 
