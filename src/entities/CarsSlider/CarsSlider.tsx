@@ -34,13 +34,13 @@ export function CarsSlider() {
 
   const handleDecline = () => {
     updateSeenPostingIds([chosenCard.car_id]);
-    updateLikedPostings([chosenCard.car_id]);
 
     handleVisual("left");
   };
 
   const handleLike = () => {
     updateSeenPostingIds([chosenCard.car_id]);
+    updateLikedPostings([chosenCard]);
 
     handleVisual("right");
   };
