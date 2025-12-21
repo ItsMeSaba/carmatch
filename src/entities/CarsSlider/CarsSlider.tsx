@@ -1,48 +1,60 @@
 "use client";
 
+import { updateSeenPostingIds } from "./lib/localstorage/seen-postings/update-seen-posting-ids";
+import { updateLikedPostings } from "./lib/localstorage/liked-postings/update-liked-postings";
+import { getSwipedCardAnimation } from "./ui/CarCard/utils/get-swiped-card-animation";
 import { ReactionPanel } from "./ui/ReactionPanel/ReactionPanel";
+import { usePostings } from "./model/hooks/usePostings";
 import { CarCard } from "./ui/CarCard/CarCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-interface Props {
-  carListings: unknown[];
-}
+export function CarsSlider() {
+  const { currentPosting, nextPosting, getNextPosting } = usePostings();
+  const [swipingDirection, setSwipingDirection] = useState<
+    "left" | "right" | null
+  >(null);
 
-export function CarsSlider({ carListings }: Props) {
-  const [chosenCard, setChosenCard] = useState<unknown | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(
-        "https://api2.myauto.ge/ka/products?TypeID=0&ForRent=0&Mans=&CurrencyID=3"
-      );
-
-      console.log("data", res);
-
-      try {
-        console.log("parsed", await res.json());
-      } catch (error) {
-        console.log("error", error);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * carListings.length);
-    const chosenCard = carListings[randomNumber];
-
-    setChosenCard(chosenCard);
-  }, [carListings.length]);
+  const chosenCard = currentPosting;
 
   if (!chosenCard) {
     return null;
   }
 
-  return (
-    <div className="max-w-[60vw] mx-auto">
-      <CarCard car={chosenCard} />
+  const handleVisual = (direction: "left" | "right") => {
+    setSwipingDirection(direction);
 
-      <ReactionPanel onDecline={() => {}} onLike={() => {}} />
+    setTimeout(() => {
+      getNextPosting();
+
+      setTimeout(() => {
+        setSwipingDirection(null);
+      }, 150);
+    }, 500);
+  };
+
+  const handleDecline = () => {
+    updateSeenPostingIds([chosenCard.car_id]);
+    updateLikedPostings([chosenCard.car_id]);
+
+    handleVisual("left");
+  };
+
+  const handleLike = () => {
+    updateSeenPostingIds([chosenCard.car_id]);
+
+    handleVisual("right");
+  };
+
+  return (
+    <div className="max-w-[60vw] mx-auto backdrop-blur-3xl">
+      <CarCard
+        car={chosenCard}
+        className={getSwipedCardAnimation(swipingDirection)}
+      />
+
+      <CarCard car={nextPosting} className={"invisible absolute!"} />
+
+      <ReactionPanel onDecline={handleDecline} onLike={handleLike} />
     </div>
   );
 }

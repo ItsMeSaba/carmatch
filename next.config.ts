@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "static.my.ge",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

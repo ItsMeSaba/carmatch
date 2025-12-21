@@ -5,12 +5,14 @@ body {
 }
 
 body {
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle at top,
     #ffd6e9 0%,
     #e7d4ff 40%,
     #d9e8ff 100%
-  );
+  ); */
+  /* @apply bg-[rgb(253, 65, 0)]; */
+  overflow: hidden;
 }
 
 .text-shadow {

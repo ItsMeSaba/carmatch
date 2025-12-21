@@ -13,14 +13,18 @@ import { ImageCarousel } from "./ui/ImageCarousel";
 import { formatPrice } from "./utils/formatPrice";
 import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
+import { useEffect } from "react";
 
 interface CarCardProps {
+  className?: string;
   car: CarListing;
 }
 
-export function CarCard({ car }: CarCardProps) {
+export function CarCard({ car, className }: CarCardProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
+
+  useEffect(() => {}, [car.car_id]);
 
   const images = generateImageUrls({
     picCount: car.pic_number,
@@ -41,7 +45,9 @@ export function CarCard({ car }: CarCardProps) {
   const model = getModelById(car.model_id);
 
   return (
-    <div className="relative w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden select-none">
+    <div
+      className={`relative w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden select-none ${className}`}
+    >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />
       </div>
@@ -62,7 +68,7 @@ export function CarCard({ car }: CarCardProps) {
 
           <div className="flex gap-2">
             {data.map((value) => (
-              <Pill key={value}>{value}</Pill>
+              <>{value && <Pill key={value}>{value}</Pill>}</>
             ))}
           </div>
         </div>

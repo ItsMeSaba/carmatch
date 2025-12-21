@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Props {
   images: string[];
 }
@@ -10,10 +12,13 @@ export function ImageCarousel({ images }: Props) {
           key={index}
           className="flex-[0_0_100%] min-w-0 relative aspect-[5/3.25]"
         >
-          <img
+          <Image
             src={image}
             alt={"car image"}
             className="w-full h-full object-cover"
+            height={600}
+            width={900}
+            quality={80}
           />
 
           {/* Gradient overlay for better text readability */}
