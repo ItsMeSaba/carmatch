@@ -46,12 +46,13 @@ export function CarsSlider() {
   };
 
   return (
-    <div className="max-w-[60vw] mx-auto backdrop-blur-3xl">
+    <div className="max-w-[60vw] mx-auto">
       <CarCard
         car={chosenCard}
         className={getSwipedCardAnimation(swipingDirection)}
       />
 
+      {/* Preloading next one */}
       <CarCard car={nextPosting} className={"invisible absolute!"} />
 
       <ReactionPanel onDecline={handleDecline} onLike={handleLike} />

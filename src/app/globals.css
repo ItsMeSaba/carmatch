@@ -5,13 +5,8 @@ body {
 }
 
 body {
-  /* background: radial-gradient(
-    circle at top,
-    #ffd6e9 0%,
-    #e7d4ff 40%,
-    #d9e8ff 100%
-  ); */
-  /* @apply bg-[rgb(253, 65, 0)]; */
+  @apply bg-gradient-to-b from-[#FF5A1F] via-[#FF8A5C] to-[#FFF3ED];
+
   overflow: hidden;
 }
 

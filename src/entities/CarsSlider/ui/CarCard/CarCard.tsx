@@ -67,9 +67,11 @@ export function CarCard({ car, className }: CarCardProps) {
           </div>
 
           <div className="flex gap-2">
-            {data.map((value) => (
-              <>{value && <Pill key={value}>{value}</Pill>}</>
-            ))}
+            {data.map((value) => {
+              if (!value) return null;
+
+              return <Pill key={value}>{value}</Pill>;
+            })}
           </div>
         </div>
 
