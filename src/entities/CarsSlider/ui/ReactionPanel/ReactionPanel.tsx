@@ -9,13 +9,13 @@ interface ReactionPanelProps {
 export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
   const buttons = [
     {
-      icon: <XIcon className="w-8 h-8" />,
+      icon: <XIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
       color: "text-gray-500",
       onClick: onDecline,
       label: "Nope",
     },
     {
-      icon: <HeartIcon className="w-8 h-8" />,
+      icon: <HeartIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
       color: "text-rose-500",
       onClick: onLike,
       label: "Like",
@@ -23,7 +23,7 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-6 pt-6">
+    <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 pt-4 sm:pt-5 md:pt-6">
       {buttons.map((button) => (
         <button
           key={button.label}
@@ -32,12 +32,12 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
           aria-label={button.label}
         >
           <div
-            className={`w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors ${button.color}`}
+            className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors ${button.color}`}
           >
             {button.icon}
           </div>
 
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-xs sm:text-sm font-medium text-slate-700">
             {button.label}
           </span>
         </button>

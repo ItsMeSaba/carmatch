@@ -13,24 +13,52 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-function HeartIcon({ className, filled }: { className?: string; filled?: boolean }) {
+function HeartIcon({
+  className,
+  filled,
+}: {
+  className?: string;
+  filled?: boolean;
+}) {
   return (
-    <svg className={className} fill={filled ? "currentColor" : "none"} viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    <svg
+      className={className}
+      fill={filled ? "currentColor" : "none"}
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      />
     </svg>
   );
 }
 
 function ArrowLeftIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    <svg
+      className={className}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+      />
     </svg>
   );
 }
 
 export default function LikesPage() {
-  const [likedCars] = useState<CarListing[]>(typeof window !== "undefined" ? getLikedPostings() : []);
+  const [likedCars] = useState<CarListing[]>(
+    typeof window !== "undefined" ? getLikedPostings() : []
+  );
 
   return (
     <div className="min-h-screen bg-linear-to-b from-[#FF5A1F] via-[#FF8A5C] to-[#FFF3ED] py-8 px-4">
@@ -76,7 +104,7 @@ export default function LikesPage() {
         )}
 
         {/* Liked Cars List */}
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-y-auto max-h-screen">
           {likedCars.map((car) => {
             const brand = getBrandById(car.man_id);
             const model = getModelById(car.model_id);
@@ -113,7 +141,10 @@ export default function LikesPage() {
                       />
                     </div>
                     <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow-lg">
-                      <HeartIcon className="w-5 h-5 fill-[#FF5A1F] text-[#FF5A1F]" filled />
+                      <HeartIcon
+                        className="w-5 h-5 fill-[#FF5A1F] text-[#FF5A1F]"
+                        filled
+                      />
                     </div>
                   </div>
 

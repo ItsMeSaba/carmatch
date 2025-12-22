@@ -46,27 +46,27 @@ export function CarCard({ car, className }: CarCardProps) {
 
   return (
     <div
-      className={`relative w-full mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden select-none ${className}`}
+      className={`relative w-full max-w-[90vw] mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden select-none ${className}`}
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10 flex justify-between items-end">
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end">
         <div>
-          <div className="mb-3">
-            <h2 className="text-4xl font-bold text-shadow">
+          <div className="mb-2 sm:mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-shadow">
               {brand?.title} {model?.title}
             </h2>
           </div>
 
-          <div className="mb-8">
-            <span className="text-5xl font-bold text-shadow">
+          <div className="mb-4 sm:mb-6 md:mb-8">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-shadow">
               {formatPrice(car.price_usd)}
             </span>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-1.5 sm:gap-2 flex-wrap">
             {data.map((value) => {
               if (!value) return null;
 

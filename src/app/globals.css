@@ -5,9 +5,11 @@ body {
 }
 
 body {
-  @apply bg-gradient-to-b from-[#FF5A1F] via-[#FF8A5C] to-[#FFF3ED];
-
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+
+  @apply bg-linear-to-b from-[#FF5A1F] via-[#FF8A5C] to-[#FFF3ED];
 }
 
 .text-shadow {
