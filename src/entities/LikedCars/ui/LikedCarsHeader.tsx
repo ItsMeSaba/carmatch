@@ -1,0 +1,33 @@
+import ArrowLeftIcon from "../assets/arrow-left.svg";
+import HeartIcon from "../assets/heart.svg";
+import Link from "next/link";
+
+interface Props {
+  likedCarsCount: number;
+}
+
+export function LikedCarsHeader({ likedCarsCount }: Props) {
+  return (
+    <div className="mb-8 flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <Link
+          href="/"
+          className="bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-105"
+        >
+          <ArrowLeftIcon className="w-6 h-6 text-[#FF5A1F]" />
+        </Link>
+
+        <h1 className="text-4xl font-bold text-white text-shadow flex items-center gap-3">
+          <HeartIcon className="w-8 h-8 fill-white" filled />
+          Liked Cars
+        </h1>
+      </div>
+
+      <div className="bg-white/90 px-4 py-2 rounded-full shadow-lg">
+        <span className="font-bold text-[#FF5A1F]">
+          {likedCarsCount ?? 0} Cars
+        </span>
+      </div>
+    </div>
+  );
+}
