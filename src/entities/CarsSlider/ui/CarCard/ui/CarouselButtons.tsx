@@ -35,11 +35,15 @@ function CarouselButton({
 }: CarouselButtonProps) {
   return (
     <button
-      className={`absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 hover:bg-white shadow-lg flex items-center justify-center transition-all z-10 ${className}`}
+      className={`absolute rounded-full z-10 bg-white cursor-pointer ${className}`}
       aria-label={direction === "prev" ? "Previous image" : "Next image"}
       onClick={onClick}
     >
-      <CarouselArrow className={direction === "prev" ? "" : "rotate-180"} />
+      <CarouselArrow
+        className={`text-black w-12 h-12 ${
+          direction === "prev" ? "rotate-180" : ""
+        }`}
+      />
     </button>
   );
 }
