@@ -23,7 +23,7 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 pt-4 sm:pt-5 md:pt-6">
+    <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
       {buttons.map((button) => (
         <button
           key={button.label}
@@ -32,7 +32,7 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
           aria-label={button.label}
         >
           <div
-            className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors ${button.color}`}
+            className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 flex items-center justify-center hover:bg-slate-50 transition-colors ${button.color}`}
           >
             {button.icon}
           </div>

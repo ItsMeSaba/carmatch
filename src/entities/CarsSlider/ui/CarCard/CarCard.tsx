@@ -44,7 +44,7 @@ export function CarCard({ car, className }: CarCardProps) {
 
   return (
     <div
-      className={`relative w-full max-w-[90vw] mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden select-none ${className}`}
+      className={`relative w-full max-w-[90vw] mx-auto bg-white shadow-2xl overflow-hidden select-none ${className}`}
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />

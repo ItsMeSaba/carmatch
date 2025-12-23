@@ -18,7 +18,7 @@ export function LikedCarsHeader({ likedCarsCount }: Props) {
         </Link>
 
         <h1 className="text-4xl font-bold text-white text-shadow flex items-center gap-3">
-          <HeartIcon className="w-8 h-8 fill-white" filled />
+          <HeartIcon className="w-8 h-8 fill-white" />
           Liked Cars
         </h1>
       </div>

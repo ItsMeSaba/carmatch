@@ -8,8 +8,16 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
+  background-image: url("/myauto-bg.png");
+  background-size: cover;
+  background-position: top;
+}
 
-  @apply bg-linear-to-b from-[#FF5A1F] via-[#FF8A5C] to-[#FFF3ED];
+.visual-layer {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  position: fixed;
+  inset: 0;
 }
 
 .text-shadow {
