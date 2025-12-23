@@ -8,12 +8,12 @@ import { getModelById } from "@/shared/utils/get-model-by-id";
 import { getGearTypeLabel } from "./utils/getGearTypeLabel";
 import { useCarouselIndex } from "./hooks/useCarouselIndex";
 import { getFuelTypeLabel } from "./utils/getFuelTypeLabel";
+import { CarouselButtons } from "./ui/CarouselButtons";
 import { formatMileage } from "./utils/formatMileage";
 import { ImageCarousel } from "./ui/ImageCarousel";
 import { formatPrice } from "./utils/formatPrice";
 import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
-import { useEffect } from "react";
 
 interface CarCardProps {
   className?: string;
@@ -23,8 +23,6 @@ interface CarCardProps {
 export function CarCard({ car, className }: CarCardProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
-
-  useEffect(() => {}, [car.car_id]);
 
   const images = generateImageUrls({
     picCount: car.pic_number,
@@ -50,6 +48,8 @@ export function CarCard({ car, className }: CarCardProps) {
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />
+
+        <CarouselButtons emblaApi={emblaApi} />
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end">

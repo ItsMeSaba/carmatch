@@ -16,10 +16,10 @@ export function LikedCars() {
 
       {likedCars.length === 0 && <NoLikedCars />}
 
-      <div className="space-y-6 pb-[30vh] overflow-y-auto max-h-screen">
-        {likedCars.map((car) => {
-          return <LikedCarCard key={car.car_id} car={car} />;
-        })}
+      <div className="space-y-6 pb-[30vh] pr-6 overflow-y-auto max-h-screen">
+        {likedCars.map((car) => (
+          <LikedCarCard key={car.car_id} car={car} />
+        ))}
       </div>
     </div>
   );

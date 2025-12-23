@@ -10,7 +10,7 @@ export function ImageCarousel({ images }: Props) {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex">
+    <div className="flex relative">
       {images.map((image, index) => (
         <div
           key={index}
