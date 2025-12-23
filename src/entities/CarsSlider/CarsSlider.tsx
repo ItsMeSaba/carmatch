@@ -46,7 +46,7 @@ export function CarsSlider() {
   };
 
   return (
-    <div className="w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto px-2 sm:px-0 bg-white rounded-2xl overflow-hidden">
+    <div className="w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto px-2 sm:px-0 bg-white rounded-4xl overflow-hidden">
       <CarCard
         car={chosenCard}
         className={getSwipedCardAnimation(swipingDirection)}
