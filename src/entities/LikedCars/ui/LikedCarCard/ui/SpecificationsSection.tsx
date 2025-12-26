@@ -1,8 +1,21 @@
+import { getFuelTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/getFuelTypeLabel";
+import { getGearTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/getGearTypeLabel";
+import { formatMileage } from "@/entities/CarsSlider/ui/CarCard/utils/formatMileage";
+import { CarListing } from "@/types/global";
+
 interface Props {
-  specs: (string | number)[];
+  car: CarListing;
 }
 
-export function SpecificationsSection({ specs }: Props) {
+export function SpecificationsSection({ car }: Props) {
+  const specs = [
+    getGearTypeLabel(car.gear_type_id),
+    getFuelTypeLabel(car.fuel_type_id),
+    `${formatMileage(car.car_run_km)} km`,
+    `${car.engine_volume / 1000}L`,
+    car.prod_year,
+  ].filter(Boolean);
+
   return (
     <div className="flex flex-wrap gap-2 mb-4">
       {specs.map((spec, index) => (

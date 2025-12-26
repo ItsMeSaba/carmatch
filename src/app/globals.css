@@ -5,16 +5,16 @@ body {
 }
 
 body {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
   background-image: url("/myauto-bg.png");
-  background-size: cover;
   background-position: top;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 .visual-layer {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
   position: fixed;
   inset: 0;

@@ -1,7 +1,4 @@
 import { generateImageUrls } from "@/entities/CarsSlider/ui/CarCard/utils/generateImageUrls";
-import { getGearTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/getGearTypeLabel";
-import { getFuelTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/getFuelTypeLabel";
-import { formatMileage } from "@/entities/CarsSlider/ui/CarCard/utils/formatMileage";
 import { formatPrice } from "@/entities/CarsSlider/ui/CarCard/utils/formatPrice";
 import { SpecificationsSection } from "./ui/SpecificationsSection";
 import { ActionButtonsSection } from "./ui/ActionButtonsSection";
@@ -12,10 +9,11 @@ import { ImageSection } from "./ui/ImageSection";
 import { CarListing } from "@/types/global";
 
 interface Props {
+  onRemove: () => void;
   car: CarListing;
 }
 
-export function LikedCarCard({ car }: Props) {
+export function LikedCarCard({ car, onRemove }: Props) {
   const model = getModelById(car.model_id);
   const brand = getBrandById(car.man_id);
   const images = generateImageUrls({
@@ -25,13 +23,9 @@ export function LikedCarCard({ car }: Props) {
     carId: car.car_id,
   });
 
-  const specs = [
-    getGearTypeLabel(car.gear_type_id),
-    getFuelTypeLabel(car.fuel_type_id),
-    `${formatMileage(car.car_run_km)} km`,
-    `${car.engine_volume / 1000}L`,
-    car.prod_year,
-  ].filter(Boolean);
+  const onViewDetails = () => {
+    window.open(`https://myauto.ge/ka/pr/${car.car_id}`, "_blank");
+  };
 
   return (
     <div
@@ -51,9 +45,12 @@ export function LikedCarCard({ car }: Props) {
               price={formatPrice(car.price_usd)}
             />
 
-            <SpecificationsSection specs={specs} />
+            <SpecificationsSection car={car} />
 
-            <ActionButtonsSection />
+            <ActionButtonsSection
+              onViewDetails={onViewDetails}
+              onRemove={onRemove}
+            />
           </div>
         </div>
       </div>
