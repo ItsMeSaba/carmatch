@@ -22,7 +22,7 @@ export function ImageCarousel({ images }: Props) {
             className="w-full h-full object-cover"
             height={isMobile ? 400 : 600}
             width={isMobile ? 200 : 900}
-            quality={80}
+            quality={95}
           />
 
           {/* Gradient overlay for better text readability */}

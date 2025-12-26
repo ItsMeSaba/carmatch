@@ -52,7 +52,7 @@ export function CarCard({ car, className }: CarCardProps) {
         <CarouselButtons emblaApi={emblaApi} />
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end flex-col md:flex-row gap-2 md:gap-0">
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end">
         <div>
           <div className="sm:mb-3">
             <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-shadow">
@@ -75,11 +75,9 @@ export function CarCard({ car, className }: CarCardProps) {
           </div>
         </div>
 
-        <div>
-          <Pill>
-            {slideIndex} / {car.pic_number}
-          </Pill>
-        </div>
+        <Pill>
+          {slideIndex} / {car.pic_number}
+        </Pill>
       </div>
     </div>
   );
