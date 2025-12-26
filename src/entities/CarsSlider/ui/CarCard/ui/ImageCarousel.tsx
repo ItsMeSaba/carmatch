@@ -14,15 +14,15 @@ export function ImageCarousel({ images }: Props) {
       {images.map((image, index) => (
         <div
           key={index}
-          className="flex-[0_0_100%] min-w-0 relative aspect-4/5 sm:aspect-[5/3.5] md:aspect-[5/3.25]"
+          className="flex-[0_0_100%] min-w-0 relative aspect-4/4 md:aspect-5/3"
         >
           <Image
-            src={image}
-            alt={"car image"}
             className="w-full h-full object-cover"
             height={isMobile ? 400 : 600}
             width={isMobile ? 200 : 900}
+            alt={"car image"}
             quality={95}
+            src={image}
           />
 
           {/* Gradient overlay for better text readability */}
