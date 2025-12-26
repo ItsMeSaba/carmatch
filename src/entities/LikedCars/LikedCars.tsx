@@ -22,7 +22,7 @@ export function LikedCars() {
 
       {likedCars.length === 0 && <NoLikedCars />}
 
-      <div className="space-y-6 pb-[30vh] pr-6 overflow-y-auto max-h-screen">
+      <div className="space-y-6 pb-[30vh] md:pr-6 overflow-y-auto max-h-screen">
         {likedCars.map((car) => (
           <LikedCarCard
             onRemove={() => removeFromLikedCars(car.car_id)}

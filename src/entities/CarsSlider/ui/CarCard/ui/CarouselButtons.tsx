@@ -8,13 +8,13 @@ export function CarouselButtons({ emblaApi }: Props) {
   return (
     <>
       <CarouselButton
-        className="left-2 sm:left-4 top-1/2 -translate-y-1/2"
+        className="hidden md:block left-2 sm:left-4 top-1/2 -translate-y-1/2"
         onClick={() => emblaApi?.scrollPrev()}
         direction="prev"
       />
 
       <CarouselButton
-        className="right-2 sm:right-4 top-1/2 -translate-y-1/2"
+        className="hidden md:block right-2 sm:right-4 top-1/2 -translate-y-1/2"
         onClick={() => emblaApi?.scrollNext()}
         direction="next"
       />

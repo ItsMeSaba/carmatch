@@ -44,7 +44,7 @@ export function CarCard({ car, className }: CarCardProps) {
 
   return (
     <div
-      className={`relative w-full max-w-[90vw] mx-auto bg-white shadow-2xl overflow-hidden select-none ${className}`}
+      className={`relative w-full md:max-w-[90vw] mx-auto bg-white shadow-2xl overflow-hidden select-none ${className}`}
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />
@@ -52,16 +52,16 @@ export function CarCard({ car, className }: CarCardProps) {
         <CarouselButtons emblaApi={emblaApi} />
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end">
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end flex-col md:flex-row gap-2 md:gap-0">
         <div>
-          <div className="mb-2 sm:mb-3">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-shadow">
+          <div className="sm:mb-3">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-shadow">
               {brand?.title} {model?.title}
             </h2>
           </div>
 
-          <div className="mb-4 sm:mb-6 md:mb-8">
-            <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-shadow">
+          <div className="mb-2 md:mb-8">
+            <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-shadow">
               {formatPrice(car.price_usd)}
             </span>
           </div>

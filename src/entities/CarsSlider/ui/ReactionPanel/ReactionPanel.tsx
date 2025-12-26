@@ -37,7 +37,7 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
             {button.icon}
           </div>
 
-          <span className="text-xs sm:text-sm font-medium text-slate-700">
+          <span className="hidden md:block text-sm font-medium text-slate-700">
             {button.label}
           </span>
         </button>
