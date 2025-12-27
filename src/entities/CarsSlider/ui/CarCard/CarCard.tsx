@@ -44,38 +44,49 @@ export function CarCard({ car, className }: CarCardProps) {
 
   return (
     <div
-      className={`relative w-full md:max-w-[90vw] mx-auto bg-white shadow-2xl overflow-hidden select-none ${className}`}
+      className={`relative w-full md:max-w-[90vw] mx-auto bg-white md:shadow-2xl overflow-hidden select-none ${className}`}
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
         <ImageCarousel images={images} />
 
         <CarouselButtons emblaApi={emblaApi} />
+
+        <Pill className="absolute bottom-2 right-2 md:hidden">
+          {slideIndex} / {car.pic_number}
+        </Pill>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white z-10 flex justify-between items-end">
+      <div className="md:absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 md:text-white z-10 flex justify-between items-end">
         <div>
           <div className="sm:mb-3">
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-shadow">
-              {brand?.title} {model?.title}
-            </h2>
-          </div>
-
-          <div className="mb-2 md:mb-8">
-            <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-shadow">
+            <span className="text-2xl sm:text-4xl md:text-5xl font-bold md:text-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
               {formatPrice(car.price_usd)}
             </span>
           </div>
 
-          <div className="flex gap-1.5 sm:gap-2 flex-wrap">
+          <div className="mb-2 md:mb-6">
+            <h2 className="text-lg md:text-4xl font-medium md:text-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+              {brand?.title} {model?.title}
+            </h2>
+          </div>
+
+          <div className="flex gap-1 sm:gap-2 flex-wrap">
             {data.map((value) => {
               if (!value) return null;
 
-              return <Pill key={value}>{value}</Pill>;
+              return (
+                <Pill
+                  className="text-black! bg-white! border-gray-500! md:text-white! md:bg-black/30! md:border-white/40!"
+                  key={value}
+                >
+                  {value}
+                </Pill>
+              );
             })}
           </div>
         </div>
 
-        <Pill>
+        <Pill className="hidden! md:block!">
           {slideIndex} / {car.pic_number}
         </Pill>
       </div>

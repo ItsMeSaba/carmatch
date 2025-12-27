@@ -14,7 +14,7 @@ export function ImageCarousel({ images }: Props) {
       {images.map((image, index) => (
         <div
           key={index}
-          className="flex-[0_0_100%] min-w-0 relative aspect-4/4 md:aspect-5/3"
+          className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
         >
           <Image
             className="w-full h-full object-cover"

@@ -9,7 +9,7 @@ interface ReactionPanelProps {
 export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
   const buttons = [
     {
-      icon: <XIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />,
+      icon: <XIcon className="w-7 h-7 md:w-8 md:h-8" />,
       color: "text-gray-500",
       onClick: onDecline,
       label: "Nope",
