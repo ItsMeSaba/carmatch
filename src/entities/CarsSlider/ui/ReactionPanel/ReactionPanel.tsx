@@ -28,7 +28,7 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
         <button
           key={button.label}
           onClick={button.onClick}
-          className="group flex flex-col items-center gap-2 transition-transform hover:scale-110 active:scale-95"
+          className="group cursor-pointer flex flex-col items-center gap-2 transition-transform hover:scale-105 active:scale-95"
           aria-label={button.label}
         >
           <div

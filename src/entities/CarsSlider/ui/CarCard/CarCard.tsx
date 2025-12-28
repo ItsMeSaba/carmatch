@@ -2,16 +2,14 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 
-import { generateImageUrls } from "./utils/generateImageUrls";
-import { getBrandById } from "@/shared/utils/get-brand-by-id";
-import { getModelById } from "@/shared/utils/get-model-by-id";
-import { getGearTypeLabel } from "./utils/getGearTypeLabel";
+import { getCarDataItems } from "@/shared/model/utils/get-car-data-items";
+import { getBrandById } from "@/shared/model/utils/get-brand-by-id";
+import { getModelById } from "@/shared/model/utils/get-model-by-id";
+import { generateImageUrls } from "./utils/generate-image-urls";
 import { useCarouselIndex } from "./hooks/useCarouselIndex";
-import { getFuelTypeLabel } from "./utils/getFuelTypeLabel";
 import { CarouselButtons } from "./ui/CarouselButtons";
-import { formatMileage } from "./utils/formatMileage";
 import { ImageCarousel } from "./ui/ImageCarousel";
-import { formatPrice } from "./utils/formatPrice";
+import { formatPrice } from "./utils/format-price";
 import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
 
@@ -24,23 +22,10 @@ export function CarCard({ car, className }: CarCardProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
 
-  const images = generateImageUrls({
-    picCount: car.pic_number,
-    photoVer: car.photo_ver,
-    photo: car.photo,
-    carId: car.car_id,
-  });
-
-  const data = [
-    getGearTypeLabel(car.gear_type_id),
-    getFuelTypeLabel(car.fuel_type_id),
-    `${formatMileage(car.car_run_km)} km`,
-    `${car.engine_volume / 1000}L`,
-    car.prod_year,
-  ];
-
-  const brand = getBrandById(car.man_id);
   const model = getModelById(car.model_id);
+  const brand = getBrandById(car.man_id);
+  const images = generateImageUrls(car);
+  const data = getCarDataItems(car);
 
   return (
     <div

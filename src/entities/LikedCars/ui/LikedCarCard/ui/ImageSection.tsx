@@ -12,10 +12,10 @@ export function ImageSection({ imageUrl, alt }: Props) {
       <div className="w-full h-64 md:h-full relative">
         <Image
           src={imageUrl}
-          alt={alt}
-          fill
           className="object-cover"
           unoptimized
+          fill={true}
+          alt={alt}
         />
       </div>
 

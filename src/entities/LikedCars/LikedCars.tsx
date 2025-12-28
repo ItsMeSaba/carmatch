@@ -1,5 +1,5 @@
-import { removeLikedPosting } from "@/shared/lib/liked-postings/remove-liked-posting";
-import { getLikedPostings } from "@/shared/lib/liked-postings/get-liked-postings";
+import { removeLikedPosting } from "@/shared/lib/localstorage/liked-postings/remove-liked-posting";
+import { getLikedPostings } from "@/shared/lib/localstorage/liked-postings/get-liked-postings";
 import { LikedCarCard } from "./ui/LikedCarCard/LikedCarCard";
 import { LikedCarsHeader } from "./ui/LikedCarsHeader";
 import { NoLikedCars } from "./ui/NoLikedCars";
@@ -18,11 +18,13 @@ export function LikedCars() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <LikedCarsHeader likedCarsCount={likedCars.length} />
+      <div className="h-[8vh]">
+        <LikedCarsHeader likedCarsCount={likedCars.length} />
+      </div>
 
-      {likedCars.length === 0 && <NoLikedCars />}
+      <div className="space-y-6 md:pr-3 overflow-y-auto max-h-[88vh]">
+        {likedCars.length === 0 && <NoLikedCars />}
 
-      <div className="space-y-6 pb-[30vh] md:pr-6 overflow-y-auto max-h-screen">
         {likedCars.map((car) => (
           <LikedCarCard
             onRemove={() => removeFromLikedCars(car.car_id)}

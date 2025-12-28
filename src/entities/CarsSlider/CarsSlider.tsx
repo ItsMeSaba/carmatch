@@ -1,10 +1,10 @@
 "use client";
 
-import { updateSeenPostingIds } from "./lib/localstorage/seen-postings/update-seen-posting-ids";
-import { updateLikedPostings } from "../../shared/lib/liked-postings/update-liked-postings";
+import { updateSeenPostingIds } from "../../shared/lib/localstorage/seen-postings/update-seen-posting-ids";
+import { updateLikedPostings } from "../../shared/lib/localstorage/liked-postings/update-liked-postings";
 import { getSwipedCardAnimation } from "./ui/CarCard/utils/get-swiped-card-animation";
 import { ReactionPanel } from "./ui/ReactionPanel/ReactionPanel";
-import { usePostings } from "./model/hooks/usePostings";
+import { usePostings } from "../../shared/model/hooks/usePostings";
 import { CarCard } from "./ui/CarCard/CarCard";
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { useIsMobile } from "../hooks/useIsMobile";
+import { useIsMobile } from "../../../../../shared/model/hooks/useIsMobile";
 
 interface Props {
   images: string[];
@@ -21,6 +21,7 @@ export function ImageCarousel({ images }: Props) {
             height={isMobile ? 400 : 600}
             width={isMobile ? 200 : 900}
             alt={"car image"}
+            preload={true}
             quality={95}
             src={image}
           />

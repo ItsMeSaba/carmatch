@@ -1,11 +1,11 @@
 export const getFuelTypeLabel = (id: number): string => {
   const fuelTypes: Record<number, string> = {
-    1: "Petrol",
-    2: "Diesel",
-    3: "Hybrid",
-    4: "Electric",
-    5: "LPG",
-    6: "CNG",
+    2: "Petrol",
+    3: "Diesel",
+    7: "Electric",
+    11: "Hybrid",
+    5: "Gas/Petrol",
+    12: "Hydrogen",
   };
 
   return fuelTypes[id] || "";

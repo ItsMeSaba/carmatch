@@ -26,6 +26,7 @@ export function usePostings() {
 
   // Load next page when postings are almost empty
   useEffect(() => {
+    // eslint-disable-next-line
     if (postings.length === 2) setPage((prev) => prev + 1);
   }, [postings]);
 

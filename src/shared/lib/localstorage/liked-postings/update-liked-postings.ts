@@ -6,6 +6,6 @@ export function updateLikedPostings(postings: CarListing[]) {
 
   localStorage.setItem(
     "likedPostings",
-    JSON.stringify([...likedPostings, ...postings])
+    JSON.stringify([...postings, ...likedPostings])
   );
 }

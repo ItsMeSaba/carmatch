@@ -1,9 +1,9 @@
-import { generateImageUrls } from "@/entities/CarsSlider/ui/CarCard/utils/generateImageUrls";
-import { formatPrice } from "@/entities/CarsSlider/ui/CarCard/utils/formatPrice";
+import { generateImageUrls } from "@/entities/CarsSlider/ui/CarCard/utils/generate-image-urls";
+import { formatPrice } from "@/entities/CarsSlider/ui/CarCard/utils/format-price";
 import { SpecificationsSection } from "./ui/SpecificationsSection";
 import { ActionButtonsSection } from "./ui/ActionButtonsSection";
-import { getBrandById } from "@/shared/utils/get-brand-by-id";
-import { getModelById } from "@/shared/utils/get-model-by-id";
+import { getBrandById } from "@/shared/model/utils/get-brand-by-id";
+import { getModelById } from "@/shared/model/utils/get-model-by-id";
 import { TitlePriceSection } from "./ui/TitlePriceSection";
 import { ImageSection } from "./ui/ImageSection";
 import { CarListing } from "@/types/global";
@@ -16,12 +16,7 @@ interface Props {
 export function LikedCarCard({ car, onRemove }: Props) {
   const model = getModelById(car.model_id);
   const brand = getBrandById(car.man_id);
-  const images = generateImageUrls({
-    picCount: car.pic_number,
-    photoVer: car.photo_ver,
-    photo: car.photo,
-    carId: car.car_id,
-  });
+  const images = generateImageUrls(car);
 
   const onViewDetails = () => {
     window.open(`https://myauto.ge/ka/pr/${car.car_id}`, "_blank");

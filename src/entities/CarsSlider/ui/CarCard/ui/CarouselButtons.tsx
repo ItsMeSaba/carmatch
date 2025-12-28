@@ -35,7 +35,7 @@ function CarouselButton({
 }: CarouselButtonProps) {
   return (
     <button
-      className={`absolute rounded-full z-10 bg-white cursor-pointer ${className}`}
+      className={`absolute rounded-full z-10 bg-white cursor-pointer border-2 hover:scale-105 transition-all ${className}`}
       aria-label={direction === "prev" ? "Previous image" : "Next image"}
       onClick={onClick}
     >
