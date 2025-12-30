@@ -2,15 +2,30 @@ import { getSeenPostingIds } from "../../lib/localstorage/seen-postings/get-seen
 import { fetchCarListings } from "../../api/fetch-car-listing-page";
 import { useCallback, useEffect, useState } from "react";
 import { CarListing } from "@/types/global";
+import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
+import { useRouter } from "next/navigation";
 
 export function usePostings() {
   const [postings, setPostings] = useState<CarListing[]>([]);
   const [page, setPage] = useState(1);
+  const router = useRouter();
 
   // Fetching logic
   useEffect(() => {
     async function fetchPostings() {
-      const carListings = await fetchCarListings({ page });
+      const priceRange = getPriceCatalog();
+
+      if (!priceRange) {
+        router.push("/catalog");
+
+        return;
+      }
+
+      const carListings = await fetchCarListings({
+        page,
+        minPrice: priceRange.minPrice,
+        maxPrice: priceRange.maxPrice,
+      });
 
       const seenPostingIds = getSeenPostingIds();
 
