@@ -1,6 +1,6 @@
 "use client";
 
-import { LikedCars } from "@/entities/LikedCars/LikedCars";
+import { LikedCars } from "@/entities/liked-cars/LikedCars";
 
 export default function LikesPage() {
   return (

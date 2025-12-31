@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-main: #ff5a1f;
+  --color-main-darker: #cf3e15;
+}
+
 body {
   font-family: var(--font-inter);
 }

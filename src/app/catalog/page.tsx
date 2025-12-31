@@ -1,10 +1,10 @@
 "use client";
 
-import { PriceCatalog } from "@/entities/PriceCatalog/PriceCatalog";
+import { PriceCatalog } from "@/entities/price-catalog/PriceCatalog";
 
 export default function CatalogPage() {
   return (
-    <div className="min-h-screen flex justify-center items-center py-12 px-4">
+    <div className="min-h-screen flex justify-center items-start md:items-center p-5">
       <PriceCatalog />
     </div>
   );
