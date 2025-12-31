@@ -1,6 +1,6 @@
-import { getGearTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/get-gear-type-label";
-import { getFuelTypeLabel } from "@/entities/CarsSlider/ui/CarCard/utils/get-fuel-type-label";
-import { formatMileage } from "@/entities/CarsSlider/ui/CarCard/utils/format-mileage";
+import { getGearTypeLabel } from "@/entities/cars-slider/ui/CarCard/utils/get-gear-type-label";
+import { getFuelTypeLabel } from "@/entities/cars-slider/ui/CarCard/utils/get-fuel-type-label";
+import { formatMileage } from "@/entities/cars-slider/ui/CarCard/utils/format-mileage";
 import { CarListing } from "@/types/global";
 
 export function getCarDataItems(car: CarListing) {

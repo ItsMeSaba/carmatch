@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { CarsSlider } from "@/entities/CarsSlider/CarsSlider";
+import { CarsSlider } from "@/entities/cars-slider/CarsSlider";
 
 export default function DemoPage() {
   return (
