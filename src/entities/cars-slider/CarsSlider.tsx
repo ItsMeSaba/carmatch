@@ -51,13 +51,21 @@ export function CarsSlider() {
 
   return (
     <div className="w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
-      <CarCard
-        car={chosenCard}
-        className={getSwipedCardAnimation(swipingDirection)}
-      />
+      {chosenCard && (
+        <CarCard
+          className={getSwipedCardAnimation(swipingDirection)}
+          car={chosenCard}
+        />
+      )}
 
       {/* Preloading next one */}
-      <CarCard car={nextPosting} className={"invisible absolute!"} />
+      {nextPosting && (
+        <CarCard
+          className={"invisible absolute!"}
+          car={nextPosting}
+          isForPreloading
+        />
+      )}
 
       <ReactionPanel
         onDecline={handleDecline}

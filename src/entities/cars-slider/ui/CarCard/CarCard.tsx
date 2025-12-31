@@ -14,11 +14,12 @@ import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
 
 interface CarCardProps {
+  isForPreloading?: boolean;
   className?: string;
   car: CarListing;
 }
 
-export function CarCard({ car, className }: CarCardProps) {
+export function CarCard({ car, className, isForPreloading }: CarCardProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
 
@@ -32,7 +33,7 @@ export function CarCard({ car, className }: CarCardProps) {
       className={`relative w-full md:max-w-[90vw] mx-auto bg-white md:shadow-2xl overflow-hidden select-none ${className}`}
     >
       <div className="relative overflow-hidden" ref={emblaRef}>
-        <ImageCarousel images={images} />
+        <ImageCarousel isForPreloading={isForPreloading} images={images} />
 
         <CarouselButtons emblaApi={emblaApi} />
 
