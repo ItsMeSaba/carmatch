@@ -45,6 +45,10 @@ export function CarsSlider() {
     handleVisual("right");
   };
 
+  const handleOpen = () => {
+    window.open(`https://myauto.ge/ka/pr/${chosenCard.car_id}`, "_blank");
+  };
+
   return (
     <div className="w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
       <CarCard
@@ -55,7 +59,11 @@ export function CarsSlider() {
       {/* Preloading next one */}
       <CarCard car={nextPosting} className={"invisible absolute!"} />
 
-      <ReactionPanel onDecline={handleDecline} onLike={handleLike} />
+      <ReactionPanel
+        onDecline={handleDecline}
+        onLike={handleLike}
+        onOpen={handleOpen}
+      />
     </div>
   );
 }

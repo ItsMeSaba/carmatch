@@ -1,12 +1,18 @@
 import { HeartIcon } from "./assets/HeartIcon";
 import { XIcon } from "./assets/XIcon";
+import { ExternalLinkIcon } from "./assets/ExternalLinkIcon";
 
 interface ReactionPanelProps {
   onDecline: () => void;
   onLike: () => void;
+  onOpen: () => void;
 }
 
-export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
+export function ReactionPanel({
+  onDecline,
+  onLike,
+  onOpen,
+}: ReactionPanelProps) {
   const buttons = [
     {
       icon: <XIcon className="w-7 h-7 md:w-8 md:h-8" />,
@@ -23,7 +29,15 @@ export function ReactionPanel({ onDecline, onLike }: ReactionPanelProps) {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
+    <div className="relative flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
+      <button
+        onClick={onOpen}
+        className="absolute flex items-center gap-1 cursor-pointer top-2 right-2 p-2 text-slate-600 hover:text-slate-900"
+        aria-label="Open"
+      >
+        Open <ExternalLinkIcon className="w-5 h-5" />
+      </button>
+
       {buttons.map((button) => (
         <button
           key={button.label}
