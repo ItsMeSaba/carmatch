@@ -32,10 +32,10 @@ export function ReactionPanel({
     <div className="relative flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
       <button
         onClick={onOpen}
-        className="absolute flex items-center gap-1 cursor-pointer top-2 right-2 p-2 text-slate-600 hover:text-slate-900"
+        className="absolute flex items-center gap-1 cursor-pointer top-2 right-2 p-2 text-slate-600 hover:text-slate-900 text-sm md:text-base"
         aria-label="Open"
       >
-        Open <ExternalLinkIcon className="w-5 h-5" />
+        Open <ExternalLinkIcon className="w-4 h-4 md:w-5 md:h-5" />
       </button>
 
       {buttons.map((button) => (
