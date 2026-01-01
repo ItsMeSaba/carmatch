@@ -1,7 +1,7 @@
-import { generateImageUrls } from "@/entities/cars-slider/ui/CarCard/utils/generate-image-urls";
-import { formatPrice } from "@/entities/cars-slider/ui/CarCard/utils/format-price";
-import { getBrandById } from "@/shared/model/utils/get-brand-by-id";
-import { getModelById } from "@/shared/model/utils/get-model-by-id";
+import { generateImageUrls } from "@/shared/model/utils/generate-image-urls";
+import { formatPrice } from "@/shared/model/utils/format-price";
+import { getBrandById } from "@/shared/model/helpers/get-brand-by-id";
+import { getModelById } from "@/shared/model/helpers/get-model-by-id";
 import { SpecificationsSection } from "./ui/SpecificationsSection";
 import { ActionButtonsSection } from "./ui/ActionButtonsSection";
 import { TitlePriceSection } from "./ui/TitlePriceSection";

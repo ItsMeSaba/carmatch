@@ -1,4 +1,4 @@
-import { getCarDataItems } from "@/shared/model/utils/get-car-data-items";
+import { getCarDataItems } from "@/shared/model/helpers/get-car-data-items";
 import { CarListing } from "@/types/global";
 
 interface Props {

@@ -2,14 +2,14 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 
-import { getCarDataItems } from "@/shared/model/utils/get-car-data-items";
-import { getBrandById } from "@/shared/model/utils/get-brand-by-id";
-import { getModelById } from "@/shared/model/utils/get-model-by-id";
-import { generateImageUrls } from "./utils/generate-image-urls";
+import { getCarDataItems } from "@/shared/model/helpers/get-car-data-items";
+import { getBrandById } from "@/shared/model/helpers/get-brand-by-id";
+import { getModelById } from "@/shared/model/helpers/get-model-by-id";
+import { generateImageUrls } from "../../../../shared/model/utils/generate-image-urls";
 import { useCarouselIndex } from "./hooks/useCarouselIndex";
 import { CarouselButtons } from "./ui/CarouselButtons";
 import { ImageCarousel } from "./ui/ImageCarousel";
-import { formatPrice } from "./utils/format-price";
+import { formatPrice } from "../../../../shared/model/utils/format-price";
 import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
 

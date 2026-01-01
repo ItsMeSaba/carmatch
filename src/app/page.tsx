@@ -1,6 +1,6 @@
 "use client";
 
-import { Navigation } from "@/entities/cars-slider/ui/Navigation/Navigation";
+import { Navigation } from "@/entities/cars-slider/ui/navigation/Navigation";
 import { CarsSlider } from "@/entities/cars-slider/CarsSlider";
 
 export default function DemoPage() {

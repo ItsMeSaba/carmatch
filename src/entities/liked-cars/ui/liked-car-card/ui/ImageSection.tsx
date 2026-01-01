@@ -1,4 +1,4 @@
-import { HeartIcon } from "@/entities/cars-slider/ui/ReactionPanel/assets/HeartIcon";
+import { HeartIcon } from "@/entities/cars-slider/ui/reaction-panel/assets/HeartIcon";
 import Image from "next/image";
 
 interface Props {

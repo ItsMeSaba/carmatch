@@ -2,10 +2,10 @@
 
 import { updateSeenPostingIds } from "../../shared/lib/localstorage/seen-postings/update-seen-posting-ids";
 import { updateLikedPostings } from "../../shared/lib/localstorage/liked-postings/update-liked-postings";
-import { getSwipedCardAnimation } from "./ui/CarCard/utils/get-swiped-card-animation";
-import { ReactionPanel } from "./ui/ReactionPanel/ReactionPanel";
+import { getSwipedCardAnimation } from "./ui/car-card/utils/get-swiped-card-animation";
+import { ReactionPanel } from "./ui/reaction-panel/ReactionPanel";
 import { usePostings } from "../../shared/model/hooks/usePostings";
-import { CarCard } from "./ui/CarCard/CarCard";
+import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
 
 export function CarsSlider() {

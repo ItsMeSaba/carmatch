@@ -1,6 +1,6 @@
 import { removeLikedPosting } from "@/shared/lib/localstorage/liked-postings/remove-liked-posting";
 import { getLikedPostings } from "@/shared/lib/localstorage/liked-postings/get-liked-postings";
-import { LikedCarCard } from "./ui/LikedCarCard/LikedCarCard";
+import { LikedCarCard } from "./ui/liked-car-card/LikedCarCard";
 import { LikedCarsHeader } from "./ui/LikedCarsHeader";
 import { NoLikedCars } from "./ui/NoLikedCars";
 import { CarListing } from "@/types/global";
