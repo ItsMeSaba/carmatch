@@ -1,37 +1,60 @@
+import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
+import { generateImageUrls } from "@/shared/model/utils/generate-image-urls";
 import { useIsMobile } from "../../../../../shared/model/hooks/useIsMobile";
+import { useCarouselIndex } from "../hooks/useCarouselIndex";
+import { CarouselButtons } from "./CarouselButtons";
+import { CarListing } from "@/types/global";
+import { useEffect } from "react";
+import { Pill } from "./Pill";
 
 interface Props {
   isForPreloading?: boolean;
-  images: string[];
+  car: CarListing;
 }
 
-export function ImageCarousel({ images, isForPreloading }: Props) {
+export function ImageCarousel({ car, isForPreloading }: Props) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const { slideIndex } = useCarouselIndex({ emblaApi });
   const isMobile = useIsMobile();
 
-  return (
-    <div className="flex relative">
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
-        >
-          <Image
-            priority={!isForPreloading && index === 0}
-            preload={isForPreloading && index === 0}
-            className="w-full h-full object-cover"
-            height={isMobile ? 400 : 600}
-            width={isMobile ? 200 : 900}
-            alt={"car image"}
-            quality={95}
-            src={image}
-          />
+  const images = generateImageUrls(car);
 
-          {/* Gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/30" />
-        </div>
-      ))}
+  useEffect(() => {
+    emblaApi?.scrollTo(0, true);
+  }, [car.car_id, emblaApi]);
+
+  return (
+    <div className="relative overflow-hidden" ref={emblaRef}>
+      <div className="flex relative">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
+          >
+            <Image
+              priority={!isForPreloading && index === 0}
+              preload={isForPreloading && index === 0}
+              className="w-full h-full object-cover"
+              height={isMobile ? 400 : 600}
+              width={isMobile ? 200 : 900}
+              alt={"car image"}
+              quality={95}
+              src={image}
+            />
+
+            {/* Gradient overlay for better text readability */}
+            <div className="absolute inset-0 bg-linear-to-bl from-transparent via-transparent to-black/30" />
+          </div>
+        ))}
+      </div>
+
+      <CarouselButtons emblaApi={emblaApi} />
+
+      <Pill className="absolute bottom-2 right-2">
+        {slideIndex} / {car.pic_number}
+      </Pill>
     </div>
   );
 }

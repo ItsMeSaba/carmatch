@@ -1,15 +1,10 @@
 "use client";
 
-import useEmblaCarousel from "embla-carousel-react";
-
 import { getCarDataItems } from "@/shared/model/helpers/get-car-data-items";
+import { formatPrice } from "../../../../shared/model/utils/format-price";
 import { getBrandById } from "@/shared/model/helpers/get-brand-by-id";
 import { getModelById } from "@/shared/model/helpers/get-model-by-id";
-import { generateImageUrls } from "../../../../shared/model/utils/generate-image-urls";
-import { useCarouselIndex } from "./hooks/useCarouselIndex";
-import { CarouselButtons } from "./ui/CarouselButtons";
 import { ImageCarousel } from "./ui/ImageCarousel";
-import { formatPrice } from "../../../../shared/model/utils/format-price";
 import { CarListing } from "@/types/global";
 import { Pill } from "./ui/Pill";
 
@@ -20,27 +15,15 @@ interface CarCardProps {
 }
 
 export function CarCard({ car, className, isForPreloading }: CarCardProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const { slideIndex } = useCarouselIndex({ emblaApi });
-
   const model = getModelById(car.model_id);
   const brand = getBrandById(car.man_id);
-  const images = generateImageUrls(car);
   const data = getCarDataItems(car);
 
   return (
     <div
       className={`relative w-full md:max-w-[90vw] mx-auto bg-white md:shadow-2xl overflow-hidden select-none ${className}`}
     >
-      <div className="relative overflow-hidden" ref={emblaRef}>
-        <ImageCarousel isForPreloading={isForPreloading} images={images} />
-
-        <CarouselButtons emblaApi={emblaApi} />
-
-        <Pill className="absolute bottom-2 right-2 md:hidden">
-          {slideIndex} / {car.pic_number}
-        </Pill>
-      </div>
+      <ImageCarousel isForPreloading={isForPreloading} car={car} />
 
       <div className="md:absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 md:text-white z-10 flex justify-between items-end">
         <div>
@@ -71,10 +54,6 @@ export function CarCard({ car, className, isForPreloading }: CarCardProps) {
             })}
           </div>
         </div>
-
-        <Pill className="hidden! md:block!">
-          {slideIndex} / {car.pic_number}
-        </Pill>
       </div>
     </div>
   );
