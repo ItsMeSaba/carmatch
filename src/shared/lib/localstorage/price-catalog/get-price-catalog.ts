@@ -6,5 +6,10 @@ export interface PriceCatalogData {
 export function getPriceCatalog(): PriceCatalogData | null {
   const priceCatalog = localStorage.getItem("priceCatalog");
 
-  return priceCatalog ? JSON.parse(priceCatalog) : null;
+  try {
+    return priceCatalog ? JSON.parse(priceCatalog) : null;
+  } catch (e) {
+    console.error("Error parsing priceCatalog from localStorage:", e);
+    return null;
+  }
 }

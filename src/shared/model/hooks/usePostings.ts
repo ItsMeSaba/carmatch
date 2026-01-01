@@ -1,13 +1,14 @@
 import { getSeenPostingIds } from "../../lib/localstorage/seen-postings/get-seen-posting-ids";
-import { fetchCarListings } from "../../api/fetch-car-listing-page";
-import { useCallback, useEffect, useState } from "react";
-import { CarListing } from "@/types/global";
 import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
+import { fetchCarListings } from "../../api/fetch-car-listing-page";
+import { useCallback, useEffect, useState, useRef } from "react";
+import { CarListing } from "@/types/global";
 import { useRouter } from "next/navigation";
 
 export function usePostings() {
   const [postings, setPostings] = useState<CarListing[]>([]);
   const [page, setPage] = useState(1);
+  const fetchTryCount = useRef(0);
   const router = useRouter();
 
   // Fetching logic
@@ -41,8 +42,16 @@ export function usePostings() {
 
   // Load next page when postings are almost empty
   useEffect(() => {
-    // eslint-disable-next-line
-    if (postings.length <= 2) setPage((prev) => prev + 1);
+    if (fetchTryCount.current >= 4) {
+      console.error("Infinite loop detected");
+      return;
+    }
+
+    if (postings.length <= 2) {
+      fetchTryCount.current++;
+      // eslint-disable-next-line
+      setPage((prev) => prev + 1);
+    } else fetchTryCount.current = 0;
   }, [postings]);
 
   // Get next posting and remove old one

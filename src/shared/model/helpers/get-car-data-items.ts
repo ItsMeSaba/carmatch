@@ -8,13 +8,13 @@ export function getCarDataItems(car: CarListing) {
     ? (car.engine_volume / 1000).toFixed(1)
     : null;
 
-  const milage = formatMileage(car.car_run_km);
+  const mileage = formatMileage(car.car_run_km);
 
   return [
     engineVolume ? `${engineVolume}L` : null,
     getGearTypeLabel(car.gear_type_id),
     getFuelTypeLabel(car.fuel_type_id),
-    milage ? `${milage} km` : null,
+    mileage ? `${mileage} km` : null,
     car.prod_year,
   ];
 }

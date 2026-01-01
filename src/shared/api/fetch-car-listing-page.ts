@@ -14,13 +14,18 @@ export async function fetchCarListings(params: Params) {
   const url = new URL(API_ENDPOINT);
 
   url.searchParams.set("Page", page.toString());
-  url.searchParams.set("CurrencyID", "1");
+  url.searchParams.set("CurrencyID", "1"); // Set to USD
 
   if (minPrice) url.searchParams.set("PriceFrom", minPrice.toString());
   if (maxPrice) url.searchParams.set("PriceTo", maxPrice.toString());
 
-  const res = await fetch(url);
-  const data = await res.json();
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
 
-  return data?.data?.items as CarListing[];
+    return data?.data?.items as CarListing[];
+  } catch (error) {
+    console.error("Error fetching car listings:", error);
+    return [];
+  }
 }
