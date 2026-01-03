@@ -25,11 +25,8 @@ export function CarsSlider() {
 
     setTimeout(() => {
       getNextPosting();
-
-      setTimeout(() => {
-        setSwipingDirection(null);
-      }, 150);
-    }, 500);
+      setSwipingDirection(null);
+    }, 400);
   };
 
   const handleDecline = () => {
@@ -50,7 +47,7 @@ export function CarsSlider() {
   };
 
   return (
-    <div className="w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
+    <div className="relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
       {chosenCard && (
         <CarCard
           className={getSwipedCardAnimation(swipingDirection)}
@@ -61,7 +58,7 @@ export function CarsSlider() {
       {/* Preloading next one */}
       {nextPosting && (
         <CarCard
-          className={"invisible absolute!"}
+          className={"absolute! top-0 left-0 z-20!"}
           car={nextPosting}
           isForPreloading
         />

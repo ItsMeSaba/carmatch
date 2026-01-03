@@ -21,7 +21,7 @@ export function CarCard({ car, className, isForPreloading }: CarCardProps) {
 
   return (
     <div
-      className={`relative w-full md:max-w-[90vw] mx-auto bg-white md:shadow-2xl overflow-hidden select-none ${className}`}
+      className={`relative z-30 w-full md:max-w-[90vw] mx-auto bg-white overflow-hidden select-none ${className}`}
     >
       <ImageCarousel isForPreloading={isForPreloading} car={car} />
 
