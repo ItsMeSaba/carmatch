@@ -1,7 +1,7 @@
 import { getSeenPostingIds } from "../../lib/localstorage/seen-postings/get-seen-posting-ids";
 import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
 import { fetchCarListings } from "../../api/fetch-car-listing-page";
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import { CarListing } from "@/types/global";
 import { useRouter } from "next/navigation";
 
@@ -10,6 +10,7 @@ export function usePostings() {
   const [page, setPage] = useState(1);
   const fetchTryCount = useRef(0);
   const router = useRouter();
+  const leadingCard = useRef<"left" | "right">("left");
 
   // Fetching logic
   useEffect(() => {
@@ -60,13 +61,40 @@ export function usePostings() {
 
     setPostings((prev) => [...prev.slice(1)]);
 
+    leadingCard.current = leadingCard.current === "left" ? "right" : "left";
+
     return nextPosting;
   }, [postings]);
 
+  const leftCard = useMemo(
+    () => postings[leadingCard.current === "left" ? 0 : 1],
+    [postings]
+  );
+  const rightCard = useMemo(
+    () => postings[leadingCard.current === "right" ? 0 : 1],
+    [postings]
+  );
+
   return {
+    leadingCard: leadingCard.current,
     allPostings: postings,
-    currentPosting: postings[0],
-    nextPosting: postings[1],
     getNextPosting,
+    rightCard,
+    leftCard,
   };
 }
+
+// [0, 1, 2, 3, 4, 5, 6]
+//  ^
+
+// left
+
+// left = +0 = 0
+// right = +1 = 1
+
+// right
+// right = +1
+// left = +0
+
+// left: x[0]
+// right: x[1]

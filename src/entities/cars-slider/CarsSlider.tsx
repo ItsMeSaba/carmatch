@@ -9,12 +9,19 @@ import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
 
 export function CarsSlider() {
-  const { currentPosting, nextPosting, getNextPosting } = usePostings();
+  const { leftCard, rightCard, getNextPosting, leadingCard, allPostings } =
+    usePostings();
   const [swipingDirection, setSwipingDirection] = useState<
     "left" | "right" | null
   >(null);
 
-  const chosenCard = currentPosting;
+  console.log("======================");
+  console.log("allPostings", allPostings);
+  console.log("leftCard", leftCard);
+  console.log("rightCard", rightCard);
+  console.log("======================");
+
+  const chosenCard = leftCard;
 
   if (!chosenCard) {
     return null;
@@ -48,18 +55,27 @@ export function CarsSlider() {
 
   return (
     <div className="relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
+      {/* left */}
       {chosenCard && (
         <CarCard
-          className={getSwipedCardAnimation(swipingDirection)}
+          className={
+            leadingCard === "left"
+              ? getSwipedCardAnimation(swipingDirection)
+              : "absolute! top-0 left-0 z-20!"
+          }
           car={chosenCard}
         />
       )}
 
-      {/* Preloading next one */}
-      {nextPosting && (
+      {/* right */}
+      {rightCard && (
         <CarCard
-          className={"absolute! top-0 left-0 z-20!"}
-          car={nextPosting}
+          className={
+            leadingCard === "right"
+              ? getSwipedCardAnimation(swipingDirection)
+              : "absolute! top-0 left-0 z-20!"
+          }
+          car={rightCard}
           isForPreloading
         />
       )}

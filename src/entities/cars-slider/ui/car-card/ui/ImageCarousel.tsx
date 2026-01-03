@@ -37,8 +37,8 @@ export function ImageCarousel({ car, isForPreloading }: Props) {
               priority={!isForPreloading && index === 0}
               preload={isForPreloading && index === 0}
               className="w-full h-full object-cover"
-              height={isMobile ? 400 : 600}
-              width={isMobile ? 200 : 900}
+              height={isMobile ? 600 * 0.6 : 600}
+              width={isMobile ? 900 * 0.6 : 900}
               alt={"car image"}
               quality={95}
               src={image}
