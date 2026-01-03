@@ -64,7 +64,8 @@ export function CarsSlider() {
               : "absolute! top-0 left-0 z-20!"
           }
           car={chosenCard}
-          isForPreloading={leadingCard !== "left"}
+          // isForPreloading={leadingCard !== "left"}
+          name="left"
         />
       )}
 
@@ -77,7 +78,8 @@ export function CarsSlider() {
               : "absolute! top-0 left-0 z-20!"
           }
           car={rightCard}
-          isForPreloading={leadingCard !== "right"}
+          // isForPreloading={leadingCard !== "right"}
+          name="right"
         />
       )}
 
