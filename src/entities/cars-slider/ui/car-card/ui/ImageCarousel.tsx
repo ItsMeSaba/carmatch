@@ -34,8 +34,8 @@ export function ImageCarousel({ car, isForPreloading }: Props) {
             className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
           >
             <Image
-              priority={!isForPreloading && index === 0}
-              preload={isForPreloading && index === 0}
+              priority={index === 0}
+              preload={index > 0 && index < 3}
               className="w-full h-full object-cover"
               height={isMobile ? 600 * 0.6 : 600}
               width={isMobile ? 900 * 0.6 : 900}
