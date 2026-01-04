@@ -10,14 +10,13 @@ import { useEffect } from "react";
 import { Pill } from "./Pill";
 
 interface Props {
-  isForPreloading?: boolean;
   car: CarListing;
 }
 
-export function ImageCarousel({ car, isForPreloading }: Props) {
+export function ImageCarousel({ car }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
 
   const images = generateImageUrls(car);
 
