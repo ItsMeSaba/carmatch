@@ -1,4 +1,4 @@
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 export const generateImageUrls = (car: CarListing): string[] => {
   const baseUrl = `https://static.my.ge/myauto/photos/${car.photo}/large`;

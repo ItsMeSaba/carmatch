@@ -3,7 +3,7 @@ import { getLikedPostings } from "@/shared/lib/localstorage/liked-postings/get-l
 import { LikedCarCard } from "./ui/liked-car-card/LikedCarCard";
 import { LikedCarsHeader } from "./ui/LikedCarsHeader";
 import { NoLikedCars } from "./ui/NoLikedCars";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 import { useState } from "react";
 
 export function LikedCars() {

@@ -1,5 +1,5 @@
 import { getCarDataItems } from "@/shared/model/helpers/get-car-data-items";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 interface Props {
   car: CarListing;

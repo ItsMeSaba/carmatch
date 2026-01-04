@@ -5,29 +5,22 @@ import { updateLikedPostings } from "../../shared/lib/localstorage/liked-posting
 import { getSwipedCardAnimation } from "./ui/car-card/utils/get-swiped-card-animation";
 import { ReactionPanel } from "./ui/reaction-panel/ReactionPanel";
 import { usePostings } from "../../shared/model/hooks/usePostings";
+import { SwipingDirection } from "@/types/global";
 import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
 
 export function CarsSlider() {
-  const { leftCard, rightCard, getNextPosting, leadingCard, allPostings } =
-    usePostings();
-  const [swipingDirection, setSwipingDirection] = useState<
-    "left" | "right" | null
-  >(null);
+  const { leftCard, rightCard, getNextPosting, leadingCard } = usePostings();
+  const [swipingDirection, setSwipingDirection] =
+    useState<SwipingDirection>(null);
 
-  console.log("======================");
-  console.log("allPostings", allPostings);
-  console.log("leftCard", leftCard);
-  console.log("rightCard", rightCard);
-  console.log("======================");
-
-  const chosenCard = leftCard;
+  const chosenCard = leadingCard === "left" ? leftCard : rightCard;
 
   if (!chosenCard) {
     return null;
   }
 
-  const handleVisual = (direction: "left" | "right") => {
+  const handleVisual = (direction: SwipingDirection) => {
     setSwipingDirection(direction);
 
     setTimeout(() => {
@@ -53,31 +46,22 @@ export function CarsSlider() {
     window.open(`https://myauto.ge/ka/pr/${chosenCard.car_id}`, "_blank");
   };
 
-  return (
-    <div className="relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
-      {/* left */}
-      {chosenCard && (
-        <CarCard
-          className={
-            leadingCard === "left"
-              ? getSwipedCardAnimation(swipingDirection)
-              : "absolute! top-0 left-0 z-20!"
-          }
-          car={chosenCard}
-        />
-      )}
+  const getCardStylings = (card: "left" | "right") =>
+    card === leadingCard
+      ? getSwipedCardAnimation(swipingDirection)
+      : "absolute! top-0 left-0 z-20!";
 
-      {/* right */}
-      {rightCard && (
-        <CarCard
-          className={
-            leadingCard === "right"
-              ? getSwipedCardAnimation(swipingDirection)
-              : "absolute! top-0 left-0 z-20!"
-          }
-          car={rightCard}
-        />
-      )}
+  return (
+    <div className="grid grid-rows-[1fr_auto] relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden min-h-[525px]">
+      <div>
+        {leftCard && (
+          <CarCard className={getCardStylings("left")} car={leftCard} />
+        )}
+
+        {rightCard && (
+          <CarCard className={getCardStylings("right")} car={rightCard} />
+        )}
+      </div>
 
       <ReactionPanel
         onDecline={handleDecline}

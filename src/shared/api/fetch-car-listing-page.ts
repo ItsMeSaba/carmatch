@@ -1,4 +1,4 @@
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 const API_ENDPOINT = "https://api2.myauto.ge/ka/products?TypeID=0&ForRent=0";
 

@@ -1,8 +1,8 @@
 import { getSeenPostingIds } from "../../lib/localstorage/seen-postings/get-seen-posting-ids";
 import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
-import { fetchCarListings } from "../../api/fetch-car-listing-page";
 import { useCallback, useEffect, useState, useRef, useMemo } from "react";
-import { CarListing } from "@/types/global";
+import { fetchCarListings } from "../../api/fetch-car-listing-page";
+import { CarListing } from "@/types/car-listing";
 import { useRouter } from "next/navigation";
 
 export function usePostings() {
@@ -43,7 +43,7 @@ export function usePostings() {
 
   // Load next page when postings are almost empty
   useEffect(() => {
-    if (fetchTryCount.current >= 4) {
+    if (fetchTryCount.current >= 10) {
       console.error("Infinite loop detected");
       return;
     }
@@ -83,18 +83,3 @@ export function usePostings() {
     leftCard,
   };
 }
-
-// [0, 1, 2, 3, 4, 5, 6]
-//  ^
-
-// left
-
-// left = +0 = 0
-// right = +1 = 1
-
-// right
-// right = +1
-// left = +0
-
-// left: x[0]
-// right: x[1]

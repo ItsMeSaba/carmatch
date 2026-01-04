@@ -6,7 +6,7 @@ import { SpecificationsSection } from "./ui/SpecificationsSection";
 import { ActionButtonsSection } from "./ui/ActionButtonsSection";
 import { TitlePriceSection } from "./ui/TitlePriceSection";
 import { ImageSection } from "./ui/ImageSection";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 interface Props {
   onRemove: () => void;

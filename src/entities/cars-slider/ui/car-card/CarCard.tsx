@@ -5,7 +5,7 @@ import { formatPrice } from "../../../../shared/model/utils/format-price";
 import { getBrandById } from "@/shared/model/helpers/get-brand-by-id";
 import { getModelById } from "@/shared/model/helpers/get-model-by-id";
 import { ImageCarousel } from "./ui/ImageCarousel";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 import { Pill } from "./ui/Pill";
 
 interface CarCardProps {
@@ -20,11 +20,11 @@ export function CarCard({ car, className }: CarCardProps) {
 
   return (
     <div
-      className={`relative z-30 w-full md:max-w-[90vw] mx-auto bg-white overflow-hidden select-none ${className}`}
+      className={`relative z-30 w-full h-full md:h-auto md:max-w-[90vw] mx-auto bg-white overflow-hidden select-none ${className}`}
     >
       <ImageCarousel car={car} />
 
-      <div className="md:absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 md:text-white z-10 flex justify-between items-end">
+      <div className="md:absolute bottom-0 h-auto left-0 right-0 p-3 md:p-6 md:text-white z-10 flex justify-between items-end">
         <div>
           <div className="sm:mb-3">
             <span className="text-2xl sm:text-4xl md:text-5xl font-bold md:text-shadow-[0_0_10px_rgba(0,0,0,0.7)]">

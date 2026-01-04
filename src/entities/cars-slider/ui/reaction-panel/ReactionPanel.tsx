@@ -29,7 +29,7 @@ export function ReactionPanel({
   ];
 
   return (
-    <div className="relative flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
+    <div className="bg-white z-50 relative flex items-center justify-center gap-4 sm:gap-5 md:gap-6 py-4">
       <button
         onClick={onOpen}
         className="absolute flex items-center gap-1 cursor-pointer top-2 right-2 p-2 text-slate-600 hover:text-slate-900 text-sm md:text-base"

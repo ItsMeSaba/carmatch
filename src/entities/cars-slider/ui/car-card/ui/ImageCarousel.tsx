@@ -5,7 +5,7 @@ import { generateImageUrls } from "@/shared/model/utils/generate-image-urls";
 import { useIsMobile } from "../../../../../shared/model/hooks/useIsMobile";
 import { useCarouselIndex } from "../hooks/useCarouselIndex";
 import { CarouselButtons } from "./CarouselButtons";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 import { useEffect } from "react";
 import { Pill } from "./Pill";
 

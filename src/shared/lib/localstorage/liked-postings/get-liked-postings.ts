@@ -1,4 +1,4 @@
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 export function getLikedPostings(): CarListing[] {
   const likedPostings = localStorage.getItem("likedPostings");
