@@ -50,7 +50,7 @@ export function usePostings() {
 
     if (postings.length <= 2) {
       fetchTryCount.current++;
-      // eslint-disable-next-line
+
       setPage((prev) => prev + 1);
     } else fetchTryCount.current = 0;
   }, [postings]);
@@ -70,6 +70,7 @@ export function usePostings() {
     () => postings[leadingCard.current === "left" ? 0 : 1],
     [postings]
   );
+
   const rightCard = useMemo(
     () => postings[leadingCard.current === "right" ? 0 : 1],
     [postings]

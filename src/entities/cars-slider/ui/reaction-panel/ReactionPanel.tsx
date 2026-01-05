@@ -1,6 +1,6 @@
+import { ExternalLinkIcon } from "./assets/ExternalLinkIcon";
 import { HeartIcon } from "./assets/HeartIcon";
 import { XIcon } from "./assets/XIcon";
-import { ExternalLinkIcon } from "./assets/ExternalLinkIcon";
 
 interface ReactionPanelProps {
   onDecline: () => void;

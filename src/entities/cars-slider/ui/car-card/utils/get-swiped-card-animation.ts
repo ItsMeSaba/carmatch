@@ -1,4 +1,6 @@
-export function getSwipedCardAnimation(direciton?: "left" | "right" | null) {
+import { SwipingDirection } from "@/types/global";
+
+export function getSwipedCardAnimation(direciton?: SwipingDirection) {
   const base = `transition-transform duration-300 ease-in-out`;
 
   if (direciton === "left") {
