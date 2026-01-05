@@ -1,7 +1,7 @@
 import { getGearTypeLabel } from "@/shared/model/utils/get-gear-type-label";
 import { getFuelTypeLabel } from "@/shared/model/utils/get-fuel-type-label";
 import { formatMileage } from "@/shared/model/utils/format-mileage";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 export function getCarDataItems(car: CarListing) {
   const engineVolume = car.engine_volume

@@ -1,23 +1,19 @@
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
 
 import { generateImageUrls } from "@/shared/model/utils/generate-image-urls";
-import { useIsMobile } from "../../../../../shared/model/hooks/useIsMobile";
 import { useCarouselIndex } from "../hooks/useCarouselIndex";
 import { CarouselButtons } from "./CarouselButtons";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 import { useEffect } from "react";
 import { Pill } from "./Pill";
 
 interface Props {
-  isForPreloading?: boolean;
   car: CarListing;
 }
 
-export function ImageCarousel({ car, isForPreloading }: Props) {
+export function ImageCarousel({ car }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const { slideIndex } = useCarouselIndex({ emblaApi });
-  const isMobile = useIsMobile();
 
   const images = generateImageUrls(car);
 
@@ -33,15 +29,13 @@ export function ImageCarousel({ car, isForPreloading }: Props) {
             key={index}
             className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
           >
-            <Image
-              priority={!isForPreloading && index === 0}
-              preload={isForPreloading && index === 0}
-              className="w-full h-full object-cover"
-              height={isMobile ? 400 : 600}
-              width={isMobile ? 200 : 900}
-              alt={"car image"}
-              quality={95}
+            {/* eslint-disable-next-line */}
+            <img
               src={image}
+              alt="car image"
+              className="w-full h-full object-cover"
+              loading={index < 2 ? "eager" : "lazy"}
+              fetchPriority={index < 2 ? "high" : "low"}
             />
 
             {/* Gradient overlay for better text readability */}

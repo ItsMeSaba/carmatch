@@ -1,5 +1,5 @@
 import { getLikedPostings } from "./get-liked-postings";
-import { CarListing } from "@/types/global";
+import { CarListing } from "@/types/car-listing";
 
 export function updateLikedPostings(postings: CarListing[]) {
   const likedPostings = getLikedPostings();

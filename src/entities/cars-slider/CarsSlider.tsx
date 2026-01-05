@@ -5,22 +5,22 @@ import { updateLikedPostings } from "../../shared/lib/localstorage/liked-posting
 import { getSwipedCardAnimation } from "./ui/car-card/utils/get-swiped-card-animation";
 import { ReactionPanel } from "./ui/reaction-panel/ReactionPanel";
 import { usePostings } from "../../shared/model/hooks/usePostings";
+import { SwipingDirection } from "@/types/global";
 import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
 
 export function CarsSlider() {
-  const { currentPosting, nextPosting, getNextPosting } = usePostings();
-  const [swipingDirection, setSwipingDirection] = useState<
-    "left" | "right" | null
-  >(null);
+  const { leftCard, rightCard, getNextPosting, leadingCard } = usePostings();
+  const [swipingDirection, setSwipingDirection] =
+    useState<SwipingDirection>(null);
 
-  const chosenCard = currentPosting;
+  const chosenCard = leadingCard === "left" ? leftCard : rightCard;
 
   if (!chosenCard) {
     return null;
   }
 
-  const handleVisual = (direction: "left" | "right") => {
+  const handleVisual = (direction: SwipingDirection) => {
     setSwipingDirection(direction);
 
     setTimeout(() => {
@@ -46,23 +46,22 @@ export function CarsSlider() {
     window.open(`https://myauto.ge/ka/pr/${chosenCard.car_id}`, "_blank");
   };
 
-  return (
-    <div className="relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden">
-      {chosenCard && (
-        <CarCard
-          className={getSwipedCardAnimation(swipingDirection)}
-          car={chosenCard}
-        />
-      )}
+  const getCardStylings = (card: "left" | "right") =>
+    card === leadingCard
+      ? getSwipedCardAnimation(swipingDirection)
+      : "absolute! top-0 left-0 z-20!";
 
-      {/* Preloading next one */}
-      {nextPosting && (
-        <CarCard
-          className={"absolute! top-0 left-0 z-20!"}
-          car={nextPosting}
-          isForPreloading
-        />
-      )}
+  return (
+    <div className="grid grid-rows-[1fr_auto] relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden min-h-[525px]">
+      <div>
+        {leftCard && (
+          <CarCard className={getCardStylings("left")} car={leftCard} />
+        )}
+
+        {rightCard && (
+          <CarCard className={getCardStylings("right")} car={rightCard} />
+        )}
+      </div>
 
       <ReactionPanel
         onDecline={handleDecline}
