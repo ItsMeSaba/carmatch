@@ -30,12 +30,16 @@ export function CarsSlider() {
   };
 
   const handleDecline = () => {
+    if (swipingDirection) return;
+
     updateSeenPostingIds([chosenCard.car_id]);
 
     handleVisual("left");
   };
 
   const handleLike = () => {
+    if (swipingDirection) return;
+
     updateSeenPostingIds([chosenCard.car_id]);
     updateLikedPostings([chosenCard]);
 
