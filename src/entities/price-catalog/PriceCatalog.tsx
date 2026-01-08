@@ -1,6 +1,7 @@
 "use client";
 
 import { setPriceCatalog } from "@/shared/lib/localstorage/price-catalog/set-price-catalog";
+import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
 import { PRICE_OPTIONS } from "./model/data/price-options";
 import { PriceOption } from "./ui/PriceOption";
 import { PriceInput } from "./ui/PriceInput";
@@ -9,8 +10,13 @@ import { useState } from "react";
 
 export function PriceCatalog() {
   const router = useRouter();
-  const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(0);
+
+  const { minPrice: savedMinPrice, maxPrice: savedMaxPrice } =
+    getPriceCatalog() || {};
+
+  const [minPrice, setMinPrice] = useState<number>(savedMinPrice || 0);
+
+  const [maxPrice, setMaxPrice] = useState<number>(savedMaxPrice || 0);
 
   const handleOptionSelect = (min: number, max: number) => {
     setMinPrice(min);
@@ -60,7 +66,8 @@ export function PriceCatalog() {
 
         <button
           onClick={handleSave}
-          className="w-full cursor-pointer bg-main hover:bg-main-darker text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+          disabled={minPrice == 0 || maxPrice == 0}
+          className="w-full cursor-pointer bg-main hover:bg-main-darker disabled:opacity-30 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
         >
           Save and Continue
         </button>
