@@ -43,7 +43,7 @@ export function usePostings() {
 
   // Load next page when postings are almost empty
   useEffect(() => {
-    if (fetchTryCount.current >= 10) {
+    if (fetchTryCount.current >= 30) {
       console.error("Infinite loop detected");
       return;
     }

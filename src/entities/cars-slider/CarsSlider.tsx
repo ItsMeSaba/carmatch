@@ -10,7 +10,8 @@ import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
 
 export function CarsSlider() {
-  const { leftCard, rightCard, getNextPosting, leadingCard } = usePostings();
+  const { leftCard, rightCard, getNextPosting, leadingCard, allPostings } =
+    usePostings();
   const [swipingDirection, setSwipingDirection] =
     useState<SwipingDirection>(null);
 
@@ -55,23 +56,34 @@ export function CarsSlider() {
       ? getSwipedCardAnimation(swipingDirection)
       : "absolute! top-0 left-0 z-20!";
 
+  console.log("allPostings", allPostings);
+
   return (
     <div className="grid grid-rows-[1fr_auto] relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden min-h-[525px]">
-      <div>
-        {leftCard && (
-          <CarCard className={getCardStylings("left")} car={leftCard} />
-        )}
+      {allPostings.length === 0 && (
+        <p className="bg-white p-2 text-center text-2xl flex items-center justify-center h-full">
+          No postings found 😢
+        </p>
+      )}
 
-        {rightCard && (
-          <CarCard className={getCardStylings("right")} car={rightCard} />
-        )}
-      </div>
+      {allPostings.length > 0 && (
+        <>
+          <div>
+            {leftCard && (
+              <CarCard className={getCardStylings("left")} car={leftCard} />
+            )}
 
-      <ReactionPanel
-        onDecline={handleDecline}
-        onLike={handleLike}
-        onOpen={handleOpen}
-      />
+            {rightCard && (
+              <CarCard className={getCardStylings("right")} car={rightCard} />
+            )}
+          </div>
+          <ReactionPanel
+            onDecline={handleDecline}
+            onLike={handleLike}
+            onOpen={handleOpen}
+          />
+        </>
+      )}
     </div>
   );
 }
