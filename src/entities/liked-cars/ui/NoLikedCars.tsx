@@ -16,7 +16,7 @@ export function NoLikedCars() {
 
       <Link
         href="/"
-        className="inline-block bg-[#FF5A1F] hover:bg-[#ff4d0d] text-white font-semibold py-3 px-8 rounded-full transition-colors"
+        className="inline-block bg-main hover:bg-main-darker text-white font-semibold py-3 px-8 rounded-full transition-colors"
       >
         Start Browsing
       </Link>

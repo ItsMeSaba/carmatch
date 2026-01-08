@@ -8,7 +8,7 @@ export function ActionButtonsSection({ onViewDetails, onRemove }: Props) {
     <div className="flex gap-3">
       <button
         onClick={onViewDetails}
-        className="cursor-pointer flex-1 bg-[#FF5A1F] hover:bg-[#ff4d0d] text-white font-semibold py-3 px-6 rounded-xl transition-colors"
+        className="cursor-pointer flex-1 bg-main hover:bg-main-darker text-white font-semibold py-3 px-6 rounded-xl transition-colors"
       >
         View Details
       </button>

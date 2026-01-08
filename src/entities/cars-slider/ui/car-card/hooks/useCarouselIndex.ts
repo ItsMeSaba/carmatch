@@ -1,7 +1,8 @@
+import { EmblaCarouselType } from "embla-carousel";
 import { useEffect, useState } from "react";
 
 interface Props {
-  emblaApi: any;
+  emblaApi?: EmblaCarouselType;
 }
 
 export const useCarouselIndex = ({ emblaApi }: Props) => {

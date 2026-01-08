@@ -1,7 +1,9 @@
 import CarouselArrow from "../assets/carousel-arrow.svg";
 
+import { EmblaCarouselType } from "embla-carousel";
+
 interface Props {
-  emblaApi: any;
+  emblaApi?: EmblaCarouselType;
 }
 
 export function CarouselButtons({ emblaApi }: Props) {

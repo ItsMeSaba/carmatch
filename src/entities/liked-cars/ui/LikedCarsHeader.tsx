@@ -24,6 +24,8 @@ export function LikedCarsHeader({ likedCarsCount }: Props) {
       </div>
 
       <div className="bg-white/90 px-4 py-2 rounded-full shadow-lg">
+        {/* REFACTOR: Extract hardcoded color #FF5A1F to a CSS variable or theme constant */}
+        {/* This color appears multiple times across the codebase and should be centralized */}
         <span className="font-bold text-[#FF5A1F]">
           {likedCarsCount ?? 0} Cars
         </span>

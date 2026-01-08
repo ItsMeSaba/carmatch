@@ -7,6 +7,7 @@ import { ActionButtonsSection } from "./ui/ActionButtonsSection";
 import { TitlePriceSection } from "./ui/TitlePriceSection";
 import { ImageSection } from "./ui/ImageSection";
 import { CarListing } from "@/types/car-listing";
+import { CAR_PREVIEW_URL } from "@/shared/data/constants";
 
 interface Props {
   onRemove: () => void;
@@ -19,14 +20,11 @@ export function LikedCarCard({ car, onRemove }: Props) {
   const images = generateImageUrls(car);
 
   const onViewDetails = () => {
-    window.open(`https://myauto.ge/ka/pr/${car.car_id}`, "_blank");
+    window.open(`${CAR_PREVIEW_URL}/${car.car_id}`, "_blank");
   };
 
   return (
-    <div
-      key={car.car_id}
-      className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow"
-    >
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
       <div className="flex flex-col md:flex-row">
         <ImageSection
           imageUrl={images[0]}

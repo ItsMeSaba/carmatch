@@ -1,10 +1,15 @@
 "use client";
 
+import {
+  SWIPE_ANIMATION_DURATION,
+  CAR_PREVIEW_URL,
+} from "@/shared/data/constants";
+
 import { updateSeenPostingIds } from "../../shared/lib/localstorage/seen-postings/update-seen-posting-ids";
 import { updateLikedPostings } from "../../shared/lib/localstorage/liked-postings/update-liked-postings";
 import { getSwipedCardAnimation } from "./ui/car-card/utils/get-swiped-card-animation";
-import { ReactionPanel } from "./ui/reaction-panel/ReactionPanel";
 import { usePostings } from "../../shared/model/hooks/usePostings";
+import { ReactionPanel } from "./ui/reaction-panel/ReactionPanel";
 import { SwipingDirection } from "@/types/global";
 import { CarCard } from "./ui/car-card/CarCard";
 import { useState } from "react";
@@ -27,7 +32,7 @@ export function CarsSlider() {
     setTimeout(() => {
       getNextPosting();
       setSwipingDirection(null);
-    }, 400);
+    }, SWIPE_ANIMATION_DURATION);
   };
 
   const handleDecline = () => {
@@ -48,15 +53,13 @@ export function CarsSlider() {
   };
 
   const handleOpen = () => {
-    window.open(`https://myauto.ge/ka/pr/${chosenCard.car_id}`, "_blank");
+    window.open(`${CAR_PREVIEW_URL}/${chosenCard.car_id}`, "_blank");
   };
 
   const getCardStylings = (card: "left" | "right") =>
     card === leadingCard
       ? getSwipedCardAnimation(swipingDirection)
       : "absolute! top-0 left-0 z-20!";
-
-  console.log("allPostings", allPostings);
 
   return (
     <div className="grid grid-rows-[1fr_auto] relative w-full max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[60vw] mx-auto bg-white rounded-xl lg:rounded-4xl overflow-hidden min-h-[525px]">

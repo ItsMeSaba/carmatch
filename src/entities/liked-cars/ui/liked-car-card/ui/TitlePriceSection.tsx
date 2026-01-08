@@ -10,9 +10,7 @@ export function TitlePriceSection({ title, price }: Props) {
         {title}
       </h3>
 
-      <p className="text-3xl md:text-4xl font-bold text-[#FF5A1F] mb-4">
-        {price}
-      </p>
+      <p className="text-3xl md:text-4xl font-bold text-main mb-4">{price}</p>
     </div>
   );
 }

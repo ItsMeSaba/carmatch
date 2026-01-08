@@ -26,7 +26,7 @@ export function ImageCarousel({ car }: Props) {
       <div className="flex relative">
         {images.map((image, index) => (
           <div
-            key={index}
+            key={image}
             className="flex-[0_0_100%] min-w-0 relative aspect-5/4 md:aspect-[4/2.75]"
           >
             {/* eslint-disable-next-line */}

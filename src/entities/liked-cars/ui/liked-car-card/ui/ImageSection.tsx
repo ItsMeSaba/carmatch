@@ -20,7 +20,7 @@ export function ImageSection({ imageUrl, alt }: Props) {
       </div>
 
       <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow-lg">
-        <HeartIcon className="w-5 h-5 fill-[#FF5A1F] text-[#FF5A1F]" />
+        <HeartIcon className="w-5 h-5 fill-main text-main" />
       </div>
     </div>
   );

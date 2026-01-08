@@ -8,9 +8,9 @@ export function DisclaimerBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const wasViwed = getDisclaimerViewed();
+    const wasViewed = getDisclaimerViewed();
 
-    if (!wasViwed) {
+    if (!wasViewed) {
       // eslint-disable-next-line
       setIsVisible(true);
     }

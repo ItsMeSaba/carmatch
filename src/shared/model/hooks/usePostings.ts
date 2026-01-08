@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import { fetchCarListings } from "../../api/fetch-car-listing-page";
 import { CarListing } from "@/types/car-listing";
 import { useRouter } from "next/navigation";
+import { FETCH_TRY_COUNT } from "@/shared/data/constants";
 
 export function usePostings() {
   const [postings, setPostings] = useState<CarListing[]>([]);
@@ -43,7 +44,7 @@ export function usePostings() {
 
   // Load next page when postings are almost empty
   useEffect(() => {
-    if (fetchTryCount.current >= 30) {
+    if (fetchTryCount.current >= FETCH_TRY_COUNT) {
       console.error("Infinite loop detected");
       return;
     }

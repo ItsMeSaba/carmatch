@@ -1,15 +1,15 @@
 import { SwipingDirection } from "@/types/global";
 
-export function getSwipedCardAnimation(direciton?: SwipingDirection) {
+export function getSwipedCardAnimation(direction?: SwipingDirection) {
   const base = `transition-transform duration-300 ease-in-out`;
 
-  if (direciton === "left") {
+  if (direction === "left") {
     return (
       base + " translate-x-[-150vw] md:translate-x-[-100vw] rotate-[20deg]"
     );
   }
 
-  if (direciton === "right") {
+  if (direction === "right") {
     return base + " translate-x-[150vw] md:translate-x-[100vw] rotate-[-20deg]";
   }
 

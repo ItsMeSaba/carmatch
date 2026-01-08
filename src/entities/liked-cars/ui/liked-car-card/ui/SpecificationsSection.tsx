@@ -10,9 +10,9 @@ export function SpecificationsSection({ car }: Props) {
 
   return (
     <div className="flex flex-wrap gap-2 mb-4">
-      {specs.map((spec, index) => (
+      {specs.map((spec) => (
         <span
-          key={index}
+          key={spec}
           className="bg-gray-100 px-3 py-1.5 rounded-full text-sm font-medium text-gray-700"
         >
           {spec}
