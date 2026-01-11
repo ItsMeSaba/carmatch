@@ -1,18 +1,20 @@
 "use client";
 
 import { setPriceCatalog } from "@/shared/lib/localstorage/price-catalog/set-price-catalog";
-import { getPriceCatalog } from "@/shared/lib/localstorage/price-catalog/get-price-catalog";
+import { useSavedPriceRange } from "./model/hooks/use-saved-price-range";
 import { PRICE_OPTIONS } from "./model/data/price-options";
 import { PriceOption } from "./ui/PriceOption";
 import { PriceInput } from "./ui/PriceInput";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function PriceCatalog() {
   const router = useRouter();
 
-  const [minPrice, setMinPrice] = useState<number>(0);
-  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const { savedMinPrice, savedMaxPrice } = useSavedPriceRange();
+
+  const [minPrice, setMinPrice] = useState<number>(savedMinPrice || 0);
+  const [maxPrice, setMaxPrice] = useState<number>(savedMaxPrice || 0);
 
   const handleOptionSelect = (min: number, max: number) => {
     setMinPrice(min);
@@ -23,15 +25,6 @@ export function PriceCatalog() {
     setPriceCatalog({ minPrice, maxPrice });
     router.push("/");
   };
-
-  useEffect(() => {
-    const savedPriceCatalog = getPriceCatalog();
-    if (savedPriceCatalog) {
-      // eslint-disable-next-line
-      setMinPrice(savedPriceCatalog.minPrice);
-      setMaxPrice(savedPriceCatalog.maxPrice);
-    }
-  }, []);
 
   return (
     <div className="max-w-2xl mx-auto p-2 md:p-6">
