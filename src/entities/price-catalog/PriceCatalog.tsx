@@ -6,17 +6,13 @@ import { PRICE_OPTIONS } from "./model/data/price-options";
 import { PriceOption } from "./ui/PriceOption";
 import { PriceInput } from "./ui/PriceInput";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function PriceCatalog() {
   const router = useRouter();
 
-  const { minPrice: savedMinPrice, maxPrice: savedMaxPrice } =
-    getPriceCatalog() || {};
-
-  const [minPrice, setMinPrice] = useState<number>(savedMinPrice || 0);
-
-  const [maxPrice, setMaxPrice] = useState<number>(savedMaxPrice || 0);
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(0);
 
   const handleOptionSelect = (min: number, max: number) => {
     setMinPrice(min);
@@ -27,6 +23,15 @@ export function PriceCatalog() {
     setPriceCatalog({ minPrice, maxPrice });
     router.push("/");
   };
+
+  useEffect(() => {
+    const savedPriceCatalog = getPriceCatalog();
+    if (savedPriceCatalog) {
+      // eslint-disable-next-line
+      setMinPrice(savedPriceCatalog.minPrice);
+      setMaxPrice(savedPriceCatalog.maxPrice);
+    }
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto p-2 md:p-6">

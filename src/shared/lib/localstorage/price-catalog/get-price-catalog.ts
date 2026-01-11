@@ -1,3 +1,5 @@
+"use client";
+
 export interface PriceCatalogData {
   minPrice: number;
   maxPrice: number;
