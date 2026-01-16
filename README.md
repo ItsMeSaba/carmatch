@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarMatch 🚗
 
-## Getting Started
+![CarMatch demo](/public/carmatch-demo.gif)
 
-First, run the development server:
+**CarMatch** is an experimental web application that reimagines car browsing using a **swipe-based, one-card-at-a-time interface**, inspired by modern interaction patterns.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Instead of scrolling through long lists of listings, CarMatch focuses on **fast decisions, minimal UI, and a frictionless browsing experience**.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 **Live demo:** https://carmatch.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ What is CarMatch?
 
-## Learn More
+CarMatch presents **real car listings** in a Tinder-style interface:
 
-To learn more about Next.js, take a look at the following resources:
+- One car displayed at a time
+- Swipe (or use buttons) to move forward
+- No repetition of already seen cars
+- No heavy filters or clutter
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project is focused on **UX experimentation**, not data ownership or building a full marketplace.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🎯 Why this exists
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Traditional car platforms rely on:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- long lists
+- complex filters
+- cognitive overload
+
+CarMatch explores a different question:
+
+> _What if browsing cars felt more like discovery than searching?_
+
+This project serves as a playground for:
+
+- UX and interaction design experiments
+- frontend performance trade-offs
+- swipe-based navigation patterns
+- working with real-world data without backend ownership
+
+---
+
+> ⚠️ CarMatch does **not** own or modify listing data.  
+> All data is fetched and displayed purely for UX experimentation.
+
+---
+
+## 👋 Author
+
+Built as a side project to explore **product thinking, UX design, and frontend architecture**.
+
+Feedback and ideas are welcome.
